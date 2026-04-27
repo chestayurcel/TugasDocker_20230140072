@@ -1,21 +1,153 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f7f6;
+        }
+        .left-side {
+        flex: 1;
+        background-image: url('/login_image.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #0b1828;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        }
+        .left-side::before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background: rgba(0, 0, 0, 0.2);
+        }
+        .quote-container {
+            position: relative;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            max-width: 80%;
+            z-index: 1;
+        }
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .quote-author {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .right-side {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+        .login-form-container {
+            width: 100%;
+            max-width: 380px;
+            padding: 2rem;
+        }
+        h2 {
+            margin-bottom: 0.2rem;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .error-message {
+            color: #e74c3c;
+            background-color: #fadbd8;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #7f8c8d;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        button {
+            width: 100%;
+            padding: 0.9rem;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #1a252f;
+        }
+    </style>
 </head>
 <body>
-<h2>Login Page - Chesta Yurcel Zebada</h2>
-<p style="color:red;" th:if="${error}" th:text="${error}"></p>
-<form th:action="@{/login}" method="post">
-    <div>
-        <label>Username :</label>
-        <input type="text" name="username" required/>
+<div class="left-side">
+    <div class="quote-container">
+        <div class="quote-text">"Hidup Jokowi!!!!"</div>
+        <div class="quote-author">- Chesta Yurcel</div>
     </div>
-    <div>
-        <label>Password :</label>
-        <input type="password" name="password" required/>
+</div>
+<div class="right-side">
+    <div class="login-form-container">
+        <h2>Login Page</h2>
+        <div class="subtitle">Chesta Yurcel Zebada</div>
+
+        <p class="error-message" th:if="${error}" th:text="${error}"></p>
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label>Username :</label>
+                <input type="text" name="username" required/>
+            </div>
+            <div class="form-group">
+                <label>Password :</label>
+                <input type="password" name="password" required/>
+            </div>
+            <button type="submit">Login</button>
+        </form>
     </div>
-    <button type="submit">Login</button>
-</form>
+</div>
 </body>
 </html>
